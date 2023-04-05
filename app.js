@@ -41,7 +41,7 @@ const RestaurantCard = (props) => {
 const Body = () => {
   return (
     <div>
-      <div className="search">Search</div>
+      <div className="search">Search bar</div>
       <div className="res-container">
         <RestaurantCard
           resName="Meghna Foods"
