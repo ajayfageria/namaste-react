@@ -33,7 +33,7 @@ const RestaurantCard = (props) => {
       />
       <h4> {resName}</h4>
       <h5> {cuisine}</h5>
-      <h5> 4.6 Star</h5>
+      <h5> 4.6 Stars</h5>
       <h5> 38 minutes</h5>
     </div>
   );
