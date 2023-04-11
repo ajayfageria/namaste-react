@@ -43,3 +43,9 @@ Two type of export imports - Named and default
 export default componentname/variable
 export {val1, val2}
 named - export const componentname
+ # React hooks- 
+ normal js utility function
+ -useState
+ -useEffect
+ # Reconcilition - React fiber
+ -virtual dom is representation of real dom
