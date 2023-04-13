@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { APP_LOGO } from "../../utils/constant";
+import  {APP_LOGO}  from "../../utils/constant";
 import {Link} from 'react-router-dom';
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
   return (
   <div className="header-container">
     <div className="app-logo">
-      <img alt="app-logo" width="100px" height="100px" src={APP_LOGO} />
+      <img src={APP_LOGO} alt="app-logo" width="100px" height="100px"  />
     </div>
     <div className="menu-items">
       <ul>
