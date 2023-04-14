@@ -12,15 +12,22 @@ import Order from "./components/Order";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
 import Shimmer from "./components/Shimmer";
-// import Instamart from "./components/Instamart";
+import UserContext from '../utils/UserContext';
+import { useState } from "react";
 const Instamart = lazy(()=> import("./components/Instamart"));
-const AppLayout = () => (
-  <div>
+const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "ajay",
+    email: "ajay@gmail.com",
+  })
+  return(
+  <UserContext.Provider value={{user: user, setUser: setUser}}>
     <Header />
     <Outlet/>
     <Footer/>
-  </div>
-);
+  </UserContext.Provider>
+  )
+  };
 const routerConfig = createBrowserRouter([
   {
     path: "/",
