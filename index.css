@@ -1,4 +1,4 @@
-.header-container {
+/* .header-container {
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -35,4 +35,7 @@
     width: 200px;
     background-color: lightgray;
     margin: 20px;
-}
+} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

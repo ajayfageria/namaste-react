@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import useOnline from "../../utils/useOnline";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -32,24 +33,29 @@ const Body = () => {
   useEffect(() => {
     getRestaurantsData();
   }, []);
-
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h3>you are offline</h3>;
+  }
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div>
-      <div className="filter">
-        <button onClick={filteredList}> Top Reated Restaurants</button>
+      <div  className="p-5 bg-pink-50 my-2"  >
+        <button onClick={filteredList} className="bg-red-500 hover:bg-violet-600"> Top Reated Restaurants</button>
         <input
           type="text"
           value={search}
+         
           onChange={(e) => {
             setSearch(e.target.value);
           }}
         />
-        <button onClick={searchList}> Search</button>
+        <button  onClick={searchList} className="p-2 m-2 bg-purple-900 text-white rounded-md"> Search</button>
+
       </div>
 
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filteredRestaurants.length === 0 ? (
           <>
             {" "}
@@ -63,7 +69,7 @@ const Body = () => {
                 key={restaurant.data.id}
               >
                 <RestaurantCard key={restaurant.data.id} resData={restaurant} />
-               </Link>
+              </Link>
             );
           })
         )}

@@ -49,3 +49,11 @@ named - export const componentname
  -useEffect
  # Reconcilition - React fiber
  -virtual dom is representation of real dom
+
+ # Episode - 09
+ - Code splitting
+ - Code Chunking
+ - Lazy loading
+ - Dynamic Bundling
+ - On Demand Bundling
+ - Dynamic Import
