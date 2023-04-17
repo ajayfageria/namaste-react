@@ -1603,3 +1603,21 @@ export const resList = [
     subtype: "basic",
   },
 ];
+export const menuList = [
+  {
+    name: 'biryani',
+    cloudinaryImageId: "yfyo8aklppbwdplv7ofp",
+  },
+  {
+    name: 'rice',
+    cloudinaryImageId: "n7pn6ilfponvcatp0n73",
+  },
+  {
+    name: 'paneer curry',
+    cloudinaryImageId: "vxxpqtjryjhhrpoxt65h",
+  },
+  {
+    name: 'mix veg',
+    cloudinaryImageId: "gmxqr3dioiugsfikrlyf",
+  }
+]

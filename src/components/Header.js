@@ -3,11 +3,13 @@ import { APP_LOGO } from "../../utils/constant";
 import { Link } from "react-router-dom";
 import useOnline from "../../utils/useOnline";
 import UserContext from "../../utils/UserContext";
-
+import {useSelector} from 'react-redux'
+import store from "../../utils/store";
 const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
   const { user, setUser } = useContext(UserContext);
+  const cartItem = useSelector(store=> store.cart.item.length)
   return (
     <div class="flex justify-between bg-pink-50 shadow-lg">
       <div className="app-logo">
@@ -33,6 +35,10 @@ const Header = () => {
           <li className="px-2">
             {" "}
             <Link to="/contact">Contact us</Link>
+          </li>
+          <li className="px-2">
+            {" "}
+            <Link to="/cart">Cart - {cartItem} items</Link>
           </li>
           <li className="px-2">
             {" "}

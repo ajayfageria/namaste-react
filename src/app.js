@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -12,22 +12,27 @@ import Order from "./components/Order";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
 import Shimmer from "./components/Shimmer";
-import UserContext from '../utils/UserContext';
+import UserContext from "../utils/UserContext";
 import { useState } from "react";
-const Instamart = lazy(()=> import("./components/Instamart"));
+const Instamart = lazy(() => import("./components/Instamart"));
+import { Provider } from "react-redux";
+import store from "../utils/store";
+import Cart from "./components/Cart";
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "ajay",
     email: "ajay@gmail.com",
-  })
-  return(
-  <UserContext.Provider value={{user: user, setUser: setUser}}>
-    <Header />
-    <Outlet/>
-    <Footer/>
-  </UserContext.Provider>
-  )
-  };
+  });
+  return (
+    <Provider store={store}>
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
+    </Provider>
+  );
+};
 const routerConfig = createBrowserRouter([
   {
     path: "/",
@@ -41,10 +46,12 @@ const routerConfig = createBrowserRouter([
       {
         path: "/about",
         element: <AboutClass />,
-        children: [{
-          path: "profile",
-          element: <ProfileClass />,
-        }]
+        children: [
+          {
+            path: "profile",
+            element: <ProfileClass />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -57,10 +64,19 @@ const routerConfig = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
-      },{
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
         path: "/instamart",
-        element: <Suspense fallback={<Shimmer/>}><Instamart /></Suspense>,
-      }
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
